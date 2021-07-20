@@ -55,7 +55,7 @@ app.use(LoginRoute);
 app.use(TasksRoutes);
 app.use(AuthTasksRoutes);
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT);
 console.log(`App Running on port: ${PORT}`);
