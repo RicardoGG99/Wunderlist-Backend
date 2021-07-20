@@ -57,4 +57,6 @@ app.use(AuthTasksRoutes);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, console.log(`App Running on port: ${PORT}`));
+app.listen(app.get("port"));
+console.log(`App Running on port: ${app.get("port")}`);
+app.set("port", process.env.PORT || 4000);
