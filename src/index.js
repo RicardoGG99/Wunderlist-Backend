@@ -14,6 +14,7 @@ const AuthTasksRoutes = require("./routes/auth.task");
 
 const app = express();
 
+app.use(express.json());
 app.use(
   cors({
     origin: true,
@@ -24,7 +25,10 @@ app.use(
   })
 );
 
-app.use(express.json());
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+}
+
 app.use(cookieParser(process.env.SECRET || "Just a Secret!"));
 app.use(
   session({
@@ -55,7 +59,7 @@ app.use(LoginRoute);
 app.use(TasksRoutes);
 app.use(AuthTasksRoutes);
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 80;
 
 app.listen(PORT);
 console.log(`App Running on port: ${PORT}`);

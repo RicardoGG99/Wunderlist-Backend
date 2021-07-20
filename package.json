@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd src && nodemon index"
+    "start": "cd src && nodemon index.js",
+    "heroku-postbuild": "npm install && npm run build"
   },
   "repository": {
     "type": "git",
