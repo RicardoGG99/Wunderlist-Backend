@@ -33,7 +33,7 @@ const createTask = async (req, res) => {
 };
 
 const updateTask = async (req, res) => {
-  const id = req.user;
+  const id = req.params.id;
   const { title, dsc, tag, dt } = req.body;
   try {
     await db.query("BEGIN");
