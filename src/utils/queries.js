@@ -1,6 +1,6 @@
 const querys = {
   //User Queries
-  GET_USERS: `SELECT * FROM Users"`,
+  GET_USERS: `SELECT * FROM Users`,
   GET_USERBYID: `SELECT * FROM Users WHERE id = $1`,
   CREATE_USER: `INSERT INTO Users (username, email, password) VALUES ($1, $2, $3) RETURNING *`,
   GET_USERBYID: `SELECT * FROM Users WHERE id = $1`,
@@ -16,7 +16,7 @@ const querys = {
   CHECKUSER: `SELECT * FROM Users WHERE username = $1`,
   CHECKPASS: `SELECT * FROM Users WHERE password = $1`,
   CHECKID: `SELECT * FROM Users WHERE id = $1`,
-  CHECKTASKID: `SELECT * FROM Tasks WHERE id=$1`,
+  CHECKTASKID: `SELECT * FROM Tasks WHERE id = $1`,
 
   //Task Queries
   CREATE_TASK: `INSERT INTO Tasks (username, title, dsc, tag, dt) VALUES ($1, $2, $3, $4, $5) RETURNING *`,

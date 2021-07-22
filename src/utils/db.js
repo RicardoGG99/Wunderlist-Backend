@@ -2,11 +2,14 @@ const { Pool } = require("pg");
 require("dotenv").config({ path: "../../../.env" });
 
 const db = new Pool({
-  host: process.env.PG_HOST,
-  database: process.env.PG_DATABASE,
-  user: process.env.PG_USER,
-  port: process.env.PG_PORT,
-  password: process.env.PG_PASSWORD,
+  host: "ec2-34-193-112-164.compute-1.amazonaws.com",
+  database: "d1vbj3tecjalio",
+  user: "gjkgyzewiagehl",
+  port: "5432",
+  password: "d40f8b8b874d96343611f97f33a8af19ac07450dcfbbd997ac3d94ff8842ddc8",
+  ssl: {
+    rejectUnauthorized: false,
+  },
   max: 10,
   min: 1,
 });

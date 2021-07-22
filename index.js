@@ -4,13 +4,13 @@ const passport = require("passport");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
-require("dotenv").config({ path: "../.env" });
+// require("dotenv").config({ path: "../.env" });
 
-const UserRoutes = require("./routes/user");
-const AuthRoutes = require("./routes/user.auth");
-const LoginRoute = require("./routes/user.login");
-const TasksRoutes = require("./routes/task");
-const AuthTasksRoutes = require("./routes/auth.task");
+const UserRoutes = require("./src/routes/user");
+const AuthRoutes = require("./src/routes/user.auth");
+const LoginRoute = require("./src/routes/user.login");
+const TasksRoutes = require("./src/routes/task");
+const AuthTasksRoutes = require("./src/routes/auth.task");
 
 const app = express();
 
@@ -25,9 +25,9 @@ app.use(
   })
 );
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "client/build")));
+// }
 
 app.use(cookieParser(process.env.SECRET || "Just a Secret!"));
 app.use(
@@ -38,7 +38,7 @@ app.use(
   })
 );
 
-passport.use("local", require("./utils/strategy"));
+passport.use("local", require("./src/utils/strategy"));
 
 passport.serializeUser(function (user, done) {
   console.log("user logged:" + user.username);
@@ -59,8 +59,8 @@ app.use(LoginRoute);
 app.use(TasksRoutes);
 app.use(AuthTasksRoutes);
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT);
 console.log(`App Running on port: ${PORT}`);
-app.set("port", process.env.PORT || 4000);
+// app.set("port", process.env.PORT || 4000);
